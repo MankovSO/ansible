@@ -1,4 +1,10 @@
 ---
+  - name: prepare deb hosts
+    hosts: deb
+    gather_facts: false
+    tasks:
+      - name: install pythone
+        raw: apt update && apt install -y python3
   - name: Print os facts
     hosts: all
     tasks:
