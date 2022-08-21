@@ -1,0 +1,14 @@
+---
+- name: Install lighthouse
+  hosts: lighthouse
+  tasks:
+    - name: Install Git
+      become: true
+      ansible.builtin.shell: sudo yum install git -y
+    - name: Git checkout
+      become: true
+      ansible.builtin.git:
+        repo: 'https://github.com/VKCOM/lighthouse.git'
+        dest: /var/www/lighthouse
+  roles:
+    - nginx

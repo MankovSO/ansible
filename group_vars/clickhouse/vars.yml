@@ -4,4 +4,3 @@ clickhouse_packages:
   - clickhouse-client
   - clickhouse-server
   - clickhouse-common-static
-vector_version: vector-0.21.1-x86_64-unknown-linux-musl
