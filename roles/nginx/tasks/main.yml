@@ -13,4 +13,4 @@
     src: nginx.conf.j2
     dest: "/etc/nginx/conf.d/lighthouse.conf"
     mode: 0755
-  notify: nginx systemd
+  notify: nginx reload

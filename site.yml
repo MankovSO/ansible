@@ -41,26 +41,28 @@
       become: true
       ansible.builtin.yum:
         name: zip
-    - name: Get vector distrib
-      ansible.builtin.get_url:
-        url: "https://packages.timber.io/vector/0.21.1/{{ vector_version }}.tar.gz"
-        dest: "./{{ vector_version }}.tar.gz"
-        mode: 0755
     - name: Creates directory /src/vector/
       become: true
       ansible.builtin.file:
         path: /src/vector/
         state: directory
         mode: 0755
-    - name: CP
+    - name: Get vector distrib
       become: true
-      ansible.builtin.copy:
-        src: "./{{ vector_version }}.tar.gz"
-        dest: /src/vector/{{ vector_version }}.tar.gz
+      ansible.builtin.get_url:
+        url: "https://packages.timber.io/vector/0.21.1/{{ vector_version }}.tar.gz"
+        dest: "/src/vector/{{ vector_version }}.tar.gz"
         mode: 0755
-        remote_src: yes
+    #- name: CP
+    #  become: true
+    #  ansible.builtin.copy:
+    #    src: "./{{ vector_version }}.tar.gz"
+    #    dest: /src/vector/{{ vector_version }}.tar.gz
+    #    mode: 0755
+    #    remote_src: yes
     - name: GUNZP
-      ansible.builtin.shell: sudo gunzip -f /src/vector/{{ vector_version }}.tar.gz
+      become: true
+      ansible.builtin.shell: gunzip -f /src/vector/{{ vector_version }}.tar.gz
     - name: UNZIP
       become: true
       ansible.builtin.unarchive:
@@ -81,7 +83,8 @@
   tasks:
     - name: Install Git
       become: true
-      ansible.builtin.shell: sudo yum install git -y
+      ansible.builtin.yum:
+        name: git
     - name: Git checkout
       become: true
       ansible.builtin.git:
