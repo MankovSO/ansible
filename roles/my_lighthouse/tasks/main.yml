@@ -1,0 +1,10 @@
+---
+- name: Install Git
+  become: true
+  ansible.builtin.yum:
+    name: git
+- name: Git checkout
+  become: true
+  ansible.builtin.git:
+    repo: 'https://github.com/VKCOM/lighthouse.git'
+    dest: /var/www/lighthouse

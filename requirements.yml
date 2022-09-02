@@ -1,0 +1,12 @@
+- src: git@github.com:MankovSO/my_vector.git
+  scm: git
+  version: "1.0.1"
+  name: my_vector
+- src: git@github.com:MankovSO/my_lighthouse.git
+  scm: git
+  version: "1.0.1"
+  name: my_lighthouse
+- src: git@github.com:AlexeySetevoi/ansible-clickhouse.git
+  scm: git
+  version: "1.11.0"
+  name: my_clickhouse 
