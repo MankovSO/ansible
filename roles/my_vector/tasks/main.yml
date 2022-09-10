@@ -1,25 +1,25 @@
 ---
 - name: Install tar
-  become: true
+  #become: true
   ansible.builtin.yum:
     name: zip
 - name: Creates directory /src/vector/
-  become: true
+  #become: true
   ansible.builtin.file:
     path: /src/vector/
     state: directory
     mode: 0755
 - name: Get vector distrib
-  become: true
+  #become: true
   ansible.builtin.get_url:
     url: "https://packages.timber.io/vector/0.21.1/{{ vector_version }}.tar.gz"
     dest: "/src/vector/{{ vector_version }}.tar.gz"
     mode: 0755
 - name: GUNZP
-  become: true
+  #become: true
   ansible.builtin.shell: gunzip -f /src/vector/{{ vector_version }}.tar.gz
 - name: UNZIP
-  become: true
+  #become: true
   ansible.builtin.unarchive:
     src: /src/vector/{{ vector_version }}.tar
     dest: /src/vector/
@@ -28,7 +28,7 @@
     remote_src: yes
   ignore_errors: "{{ ansible_check_mode }}"
 - name: Set environment vector
-  become: true
+  #become: true
   ansible.builtin.template:
     src: templates/vector.sh.j2
     dest: /etc/profile.d/vector.sh

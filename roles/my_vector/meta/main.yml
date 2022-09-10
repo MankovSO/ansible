@@ -1,4 +1,6 @@
 galaxy_info:
+  role_name: my_vector
+  namespace: vagrant
   author: Sergey Mankov
   description: Install Vector
   company: 

@@ -1,0 +1,24 @@
+---
+# This is an example playbook to execute Ansible tests.
+
+- name: Verify
+  hosts: all
+  gather_facts: false
+  tasks:
+  - name: check vector config
+    ansible.builtin.shell: "yamllint /etc/vector-x86_64-unknown-linux-musl/config/config.yaml"
+    register: check_vector_config
+
+  - name: check vector config
+    ansible.builtin.assert:
+      that: check_vector_config.rc == 0
+      success_msg: "Vector config is valid"
+
+  - name: check vector status
+    ansible.builtin.shell: "systemctl status vector"
+    register: check_vector_service_status
+
+  - name: check vector service run
+    ansible.builtin.assert:
+      that: check_vector_service_status.rc == 0
+      success_msg: "Vector service is running"
