@@ -49,14 +49,15 @@
 ```
 Ответ:
 не менял файл - запускал командой (см.выше)
+Сократил число этапов для tox
 ```
 8. Запустите команду `tox`. Убедитесь, что всё отработало успешно.
 ```
-Ответ: все успешно
-Мой verify.yml
+Ответ: не все успешно, но работает, были проблемы с uts (когда ранее сдавал), но Алексей Метляков поправил свой образ и завелось норм (многое пробовал, но не получалось в контейнере в файле /etc/containers/containers.conf поменять значение utsns на private utsns="private")
+также изменил команду запуска контейнера на: docker run --privileged=True -v /home/vagrant/git_project/devops-netology-v1/ansible/roles/my_vector:/opt/my_vector -w /opt/my_vector -it aragast/netology:latest /bin/bash
 ```
 <p align="center">
-<img src="./img/verify.png">
+<img src="./img/8.5_tox.png">
 </p>
 
 9. Добавьте новый тег на коммит с рабочим сценарием в соответствии с семантическим версионированием.
